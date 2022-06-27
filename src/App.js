@@ -4,6 +4,7 @@ import EntertainmentPosts from './components/Posts/EntertainmentPosts';
 import TechPosts from './components/Posts/TechPosts';
 import PoliticsPosts from './components/Posts/PoliticsPosts';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="technology" element={<TechPosts />} />
         <Route path="politics" element={<PoliticsPosts />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
