@@ -18,48 +18,52 @@ import Music from './UtilsComponents/SidePostPreview';
 import Archieve from './UtilsComponents/Archieve';
 import LatestArticles from './LatestArticles';
 import LatestPostSide from '../SideBars/LatestPostSide';
+import Header from '../Header';
 
 function Home() {
   return (
-    <Container className="flex column">
-      <div className="trend-finance">
-        <Trend trend={trendPost} />
-        <NoticePots />
-      </div>
-      <div className="entertainment-post-genre">
-        <TrendX
-          trend={entertainmentPosts}
-          icon={<FaRegPlayCircle />}
-          genre="Entertainment"
-        />
-      </div>
-      <div className="life-post-genre">
-        <Trend trend={lifePosts} icon={<MdMenuBook />} genre="Life" />
-        <LifeSide />
-      </div>
-
-      <div className="politics-post-genre">
-        <TrendX trend={politicsPosts} icon={<IoWallet />} genre="Finance" />
-      </div>
-
-      <div className="tech-post-genre">
-        <Trend trend={lifePosts} icon={<FaMouse />} genre="Tech" />
-        <div className="music-side-post flex column">
-          <Music
-            title="Music"
-            genre="Music"
-            icon={<FaMusic />}
-            trendArr={musicSide}
-          />
-          <Archieve />
+    <>
+      <Header />
+      <Container className="flex column">
+        <div className="trend-finance">
+          <Trend trend={trendPost} />
+          <NoticePots />
         </div>
-      </div>
+        <div className="entertainment-post-genre">
+          <TrendX
+            trend={entertainmentPosts}
+            icon={<FaRegPlayCircle />}
+            genre="Entertainment"
+          />
+        </div>
+        <div className="life-post-genre">
+          <Trend trend={lifePosts} icon={<MdMenuBook />} genre="Life" />
+          <LifeSide />
+        </div>
 
-      <div className="latest-aticles">
-        <LatestArticles latestTrend={latestPosts} />
-        <LatestPostSide />
-      </div>
-    </Container>
+        <div className="politics-post-genre">
+          <TrendX trend={politicsPosts} icon={<IoWallet />} genre="Finance" />
+        </div>
+
+        <div className="tech-post-genre">
+          <Trend trend={lifePosts} icon={<FaMouse />} genre="Tech" />
+          <div className="music-side-post flex column">
+            <Music
+              title="Music"
+              genre="Music"
+              icon={<FaMusic />}
+              trendArr={musicSide}
+            />
+            <Archieve />
+          </div>
+        </div>
+
+        <div className="latest-aticles">
+          <LatestArticles latestTrend={latestPosts} />
+          <LatestPostSide />
+        </div>
+      </Container>
+    </>
   );
 }
 

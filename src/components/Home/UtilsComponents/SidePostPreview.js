@@ -39,7 +39,7 @@ const Container = styled.div`
     gap: 30px;
 
     h3 {
-      font-size: 2.3rem;
+      font-size: 1.8rem;
     }
 
     svg {

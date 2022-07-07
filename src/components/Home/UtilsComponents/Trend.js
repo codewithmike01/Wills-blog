@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 /* eslint-disable comma-dangle */
 /* eslint-disable object-curly-newline */
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 function Trend({ trend, icon, genre }) {
+  const navigate = useNavigate();
   const blogTrend = trend.map(
     ({ id, image, date, description, title, genre }) => (
       <div className="flex card" key={id}>
@@ -13,7 +17,9 @@ function Trend({ trend, icon, genre }) {
         </div>
 
         <div className="content">
-          <h2>{title}</h2>
+          <h2 type="button" onClick={() => navigate(`/${genre}/${id}`)}>
+            {title}
+          </h2>
 
           <div className="content-date-year flex">
             <span className="content-genre">{genre}</span>
