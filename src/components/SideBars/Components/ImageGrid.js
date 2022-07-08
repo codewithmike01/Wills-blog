@@ -18,4 +18,26 @@ function ImageGrid() {
 
 export default ImageGrid;
 
-const Container = styled.div``;
+const Container = styled.div`
+  .grid-image {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .grid-img {
+      width: 100%;
+      height: 120px;
+      cursor: pointer;
+      border: 0 solid transparent;
+      transition: border 0.7s ease-in-out;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &:hover {
+        border: 1px solid #888;
+      }
+    }
+  }
+`;

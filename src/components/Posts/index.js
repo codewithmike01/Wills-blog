@@ -8,15 +8,20 @@ import {
   FaTwitter,
   FaBookReader,
 } from 'react-icons/fa';
-import { AiOutlineMail } from 'react-icons/ai';
+import { AiOutlineMail, AiOutlineLike } from 'react-icons/ai';
 import Music from '../Home/UtilsComponents/SidePostPreview';
-import { musicSide } from '../Home/UtilsComponents/CommonTrend';
+import {
+  musicSide,
+  entertainmentPosts,
+} from '../Home/UtilsComponents/CommonTrend';
 import generalPosts from './Common/commonData';
 import HeaderNav from '../Header/HeaderNav';
 import SearchForm from '../SideBars/SearchForm';
-// import ImageGrid from '../SideBars/Components/ImageGrid';
-
-// import BlogImage from '../../assets/imgBlog.jpg';
+import TrendX from '../Home/UtilsComponents/TrendX';
+import ImageGrid from '../SideBars/Components/ImageGrid';
+import Instagram from '../SideBars/Components/Instagram';
+import Comment from '../Comment';
+import BlogImage from '../../assets/blogImg.jpg';
 
 function GeneralPosts() {
   const { genre, id } = useParams();
@@ -33,7 +38,7 @@ function GeneralPosts() {
             <li className="opacity">Auguest 29, 2019</li>
           </ul>
 
-          <div className="image-container">
+          <div className="image-post">
             <img src={el.image} alt="post gallary" />
           </div>
 
@@ -121,18 +126,38 @@ function GeneralPosts() {
   return (
     <>
       <HeaderNav />
-      <Container className="flex ">
-        <div>{post}</div>
-        <div className="left-post-side flex column">
-          <SearchForm />
-
-          <div className="lastest-artucle">
+      <Container className="flex column">
+        <div className="flex main-post">
+          <div>{post}</div>
+          <div className="right-post-side flex column">
+            <SearchForm />
             <Music
               title="Latest article"
               genre="Music"
               icon={<FaBookReader />}
               trendArr={musicSide}
             />
+
+            <Instagram />
+            <ImageGrid />
+          </div>
+        </div>
+
+        <div className="related-post">
+          <TrendX
+            trend={entertainmentPosts}
+            icon={<AiOutlineLike />}
+            genre="Related article"
+          />
+        </div>
+        <div className="section-comment">
+          <Comment />
+          <div className="image-containaer">
+            <img src={BlogImage} alt="comments" />
+            <h3>
+              Slow Down
+              <span>The Noise</span>
+            </h3>
           </div>
         </div>
       </Container>
@@ -143,183 +168,217 @@ function GeneralPosts() {
 export default GeneralPosts;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-
-  margin-top: 15rem;
   padding-left: 5rem;
   padding-right: 5rem;
-  gap: 6.5rem;
+  gap: 7rem;
 
-  .post-contianer {
-    h1 {
-      font-size: 2rem;
-    }
+  .main-post {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 
-    .genre {
-      align-items: center;
-      li {
-        list-style: none;
+    margin-top: 15rem;
+    gap: 6.5rem;
+
+    .post-contianer {
+      h1 {
+        font-size: 2rem;
       }
 
-      .list {
-        color: #000;
-        background-color: #ffa000;
-        padding: 0.2rem;
-        padding-left: 0.7rem;
-        padding-right: 1rem;
-        margin-right: 20px;
-        cursor: pointer;
-
-        &:hover {
-          background-color: #ffae00;
-        }
-      }
-    }
-  }
-
-  .image-container {
-    margin-top: 50px;
-    width: 100%;
-    height: 355px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .post-socials {
-    gap: 25px;
-    margin-top: 20px;
-    button {
-      background-color: transparent;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      align-items: center;
-      list-style: none;
-      cursor: pointer;
-
-      &:hover,
-      &:focus {
-        filter: brightness(115%);
-      }
-
-      p {
-        font-size: 0.8rem;
-        font-weight: bold;
-      }
-    }
-
-    .facebook {
-      color: #41598a;
-    }
-
-    .twitter {
-      color: #187491;
-    }
-
-    .pintress {
-      color: #a11b23;
-    }
-
-    .whatsapp {
-      color: #5d9150;
-    }
-
-    .share,
-    .socials {
-      height: 40px;
-      padding-left: 10px;
-      padding-right: 20px;
-    }
-
-    .share {
-      border: 1px solid #666;
-    }
-
-    .socials {
-      border: 1px solid rgba(255, 163, 1, 0.8);
-
-      div {
-        gap: 15px;
+      .genre {
         align-items: center;
-        width: 100%;
+        li {
+          list-style: none;
+        }
 
-        .icon-container {
-          background-color: rgba(255, 163, 1, 0.8);
-          height: 40px;
-          width: 40px;
-          margin-left: -10px;
-          padding-left: 10px;
-          display: flex;
-          align-items: center;
-          justify-centent: center;
+        .list {
+          color: #000;
+          background-color: #ffa000;
+          padding: 0.2rem;
+          padding-left: 0.7rem;
+          padding-right: 1rem;
+          margin-right: 20px;
+          cursor: pointer;
 
-          svg {
-            color: #000;
+          &:hover {
+            background-color: #ffae00;
           }
         }
       }
-    }
-  }
-
-  .post-content {
-    margin-top: 30px;
-
-    p {
-      line-height: 2em;
-      text-align: justify;
-      word-wrap: no-wrap;
-    }
-  }
-
-  .user-post {
-    gap: 20px;
-    margin-top: 40px;
-    align-items: center;
-    .user-image-container {
-      width: 150px;
-      height: 100px;
-
-      img {
+      .image-post {
+        margin-top: 50px;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: 355px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
 
-    .user-info {
-      width: 100%;
-      align-items: center;
-
-      p {
-        margin-top: -10px;
-        font-size: 0.7rem;
-      }
-      ul {
-        gap: 10px;
+    .post-socials {
+      gap: 25px;
+      margin-top: 20px;
+      button {
+        background-color: transparent;
+        color: #fff;
+        display: flex;
         align-items: center;
-        font-size: 0.9rem;
-        li {
-          list-style: none;
-          svg {
-            color: #ffa301;
-            cursor: pointer;
+        gap: 20px;
+        align-items: center;
+        list-style: none;
+        cursor: pointer;
 
-            &:hover {
-              filter: brightness(115%);
+        &:hover,
+        &:focus {
+          filter: brightness(115%);
+        }
+
+        p {
+          font-size: 0.8rem;
+          font-weight: bold;
+        }
+      }
+
+      .facebook {
+        color: #41598a;
+      }
+
+      .twitter {
+        color: #187491;
+      }
+
+      .pintress {
+        color: #a11b23;
+      }
+
+      .whatsapp {
+        color: #5d9150;
+      }
+
+      .share,
+      .socials {
+        height: 40px;
+        padding-left: 10px;
+        padding-right: 20px;
+      }
+
+      .share {
+        border: 1px solid #666;
+      }
+
+      .socials {
+        border: 1px solid rgba(255, 163, 1, 0.8);
+
+        div {
+          gap: 15px;
+          align-items: center;
+          width: 100%;
+
+          .icon-container {
+            background-color: rgba(255, 163, 1, 0.8);
+            height: 40px;
+            width: 40px;
+            margin-left: -10px;
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-centent: center;
+
+            svg {
+              color: #000;
             }
           }
         }
       }
     }
+
+    .post-content {
+      margin-top: 30px;
+
+      p {
+        line-height: 2em;
+        text-align: justify;
+        word-wrap: no-wrap;
+      }
+    }
+
+    .user-post {
+      gap: 20px;
+      margin-top: 40px;
+      align-items: center;
+      .user-image-container {
+        width: 150px;
+        height: 100px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .user-info {
+        width: 100%;
+        align-items: center;
+
+        p {
+          margin-top: -10px;
+          font-size: 0.7rem;
+        }
+        ul {
+          gap: 10px;
+          align-items: center;
+          font-size: 0.9rem;
+          li {
+            list-style: none;
+            svg {
+              color: #ffa301;
+              cursor: pointer;
+
+              &:hover {
+                filter: brightness(115%);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .right-post-side {
+      gap: 2rem;
+      margin-top: 90px;
+    }
   }
 
-  .left-post-side {
-    margin-top: 90px;
+  .section-comment {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 6.5rem;
+
+    .image-containaer {
+      position: relative;
+      width: 100%;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+      }
+
+      h3 {
+        font-size: 2.5rem;
+        position: absolute;
+        top: 12rem;
+        left: 40px;
+
+        span {
+          display: block;
+          margin-top: -20px;
+        }
+      }
+    }
   }
 `;
