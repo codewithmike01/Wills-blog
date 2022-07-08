@@ -126,6 +126,7 @@ function GeneralPosts() {
   return (
     <>
       <HeaderNav />
+
       <Container className="flex column">
         <div className="flex main-post">
           <div>{post}</div>
@@ -168,6 +169,7 @@ function GeneralPosts() {
 export default GeneralPosts;
 
 const Container = styled.div`
+  margin-top: -200px;
   padding-left: 5rem;
   padding-right: 5rem;
   gap: 7rem;
