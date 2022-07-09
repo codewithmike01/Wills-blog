@@ -2,24 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { ImShare2 } from 'react-icons/im';
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaBookReader,
-} from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { AiOutlineMail, AiOutlineLike } from 'react-icons/ai';
-import Music from '../Home/UtilsComponents/SidePostPreview';
-import {
-  musicSide,
-  entertainmentPosts,
-} from '../Home/UtilsComponents/CommonTrend';
+import { entertainmentPosts } from '../Home/UtilsComponents/CommonTrend';
+import Sidebar from './Common/Sidebar';
 import generalPosts from './Common/commonData';
 import HeaderNav from '../Header/HeaderNav';
-import SearchForm from '../SideBars/SearchForm';
 import TrendX from '../Home/UtilsComponents/TrendX';
-import ImageGrid from '../SideBars/Components/ImageGrid';
-import Instagram from '../SideBars/Components/Instagram';
 import Comment from '../Comment';
 import BlogImage from '../../assets/blogImg.jpg';
 
@@ -130,18 +119,7 @@ function GeneralPosts() {
       <Container className="flex column">
         <div className="flex main-post">
           <div>{post}</div>
-          <div className="right-post-side flex column">
-            <SearchForm />
-            <Music
-              title="Latest article"
-              genre="Music"
-              icon={<FaBookReader />}
-              trendArr={musicSide}
-            />
-
-            <Instagram />
-            <ImageGrid />
-          </div>
+          <Sidebar />
         </div>
 
         <div className="related-post">
@@ -346,11 +324,6 @@ const Container = styled.div`
           }
         }
       }
-    }
-
-    .right-post-side {
-      gap: 2rem;
-      margin-top: 90px;
     }
   }
 
