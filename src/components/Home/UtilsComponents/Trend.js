@@ -7,7 +7,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-function Trend({ trend, icon, genre }) {
+function Trend({ trend, icon, genre, showGenre }) {
   const navigate = useNavigate();
   const blogTrend = trend.map(
     ({ id, image, date, description, title, genre }) => (
@@ -22,8 +22,13 @@ function Trend({ trend, icon, genre }) {
           </h2>
 
           <div className="content-date-year flex">
-            <span className="content-genre">{genre}</span>
-            <span>{date}</span>
+            <span
+              className="content-genre"
+              style={{ display: showGenre ? 'block' : 'none' }}
+            >
+              {genre}
+            </span>
+            <span className="opacity">{date}</span>
           </div>
 
           <p className="content-description opacity">{description}</p>

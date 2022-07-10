@@ -26,7 +26,7 @@ function Home() {
       <Header />
       <Container className="flex column">
         <div className="trend-finance">
-          <Trend trend={trendPost} />
+          <Trend trend={trendPost} showGenre />
           <NoticePots />
         </div>
         <div className="entertainment-post-genre">
@@ -37,7 +37,12 @@ function Home() {
           />
         </div>
         <div className="life-post-genre">
-          <Trend trend={lifePosts} icon={<MdMenuBook />} genre="Life" />
+          <Trend
+            trend={lifePosts}
+            icon={<MdMenuBook />}
+            genre="Life"
+            showGenre
+          />
           <LifeSide />
         </div>
 
@@ -46,7 +51,7 @@ function Home() {
         </div>
 
         <div className="tech-post-genre">
-          <Trend trend={lifePosts} icon={<FaMouse />} genre="Tech" />
+          <Trend trend={lifePosts} icon={<FaMouse />} genre="Tech" showGenre />
           <div className="music-side-post flex column">
             <Music
               title="Music"
