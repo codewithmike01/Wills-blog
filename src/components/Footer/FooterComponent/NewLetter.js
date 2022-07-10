@@ -70,6 +70,7 @@ const Container = styled.div`
           font-size: 0.9rem;
           cursor: pointer;
           border-radius: 5px;
+          transition: background-color 0.5s ease-in-out;
 
           &:hover {
             background-color: #ffa301;

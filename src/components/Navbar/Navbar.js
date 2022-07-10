@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 function Navbar() {
   const links = [
-    { name: 'Tech', link: 'technology' },
-    { name: 'Entertainment', link: 'entertainment' },
-    { name: 'Politics', link: 'politics' },
-    { name: 'Music', link: 'music' },
+    { name: 'Tech', link: '/category/technology' },
+    { name: 'Entertainment', link: '/category/entertainment' },
+    { name: 'Politics', link: '/category/politics' },
+    { name: 'Music', link: '/category/music' },
   ];
   return (
     <Container>

@@ -27,7 +27,7 @@ export default TextMassage;
 const Container = styled.div`
   position: relative;
   margin-left: 5rem;
-  margin-top: 25rem;
+  margin-top: 20rem;
   letter-spacing: 0.2rem;
 
   h1 {

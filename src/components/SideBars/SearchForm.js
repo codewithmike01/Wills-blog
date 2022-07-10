@@ -20,11 +20,13 @@ export default SearchForm;
 const Container = styled.div`
   form {
     .search-container {
+      height: 3rem;
       align-items: center;
       gap: 1rem;
       width: 100%;
       padding-right: 0.5rem;
-      border: 1px solid gray;
+      border: 1px solid #888;
+      border-radius: 5px;
 
       svg {
         font-size: 1.3rem;

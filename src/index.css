@@ -50,3 +50,8 @@ body::-webkit-scrollbar {
 .opacity {
   color: #888;
 }
+
+.line {
+  border: 1px solid #666;
+  width: 100%;
+}
