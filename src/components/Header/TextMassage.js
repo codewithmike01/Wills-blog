@@ -26,7 +26,8 @@ export default TextMassage;
 
 const Container = styled.div`
   position: relative;
-  margin-left: 5rem;
+  width: 95%;
+  margin: 0 auto;
   margin-top: 20rem;
   letter-spacing: 0.2rem;
 

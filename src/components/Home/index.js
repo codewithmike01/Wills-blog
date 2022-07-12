@@ -76,8 +76,8 @@ export default Home;
 
 const Container = styled.div`
   padding-top: 4rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  width: 95%;
+  margin: 0 auto;
   gap: 6.5rem;
 
   .trend-finance,
