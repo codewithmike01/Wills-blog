@@ -81,4 +81,34 @@ const Container = styled.div`
       opacity: 1;
     }
   }
+
+  @media screen and (max-width: 1000px) {
+    h1 {
+      font-size: 2.3rem;
+    }
+    p {
+      font-size: 1.7rem;
+      margin-top: -30px;
+    }
+  }
+
+  @media screen and (max-width: 897px) {
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-top: -20px;
+    }
+  }
+
+  @media screen and (max-width: 777px) {
+    h1 {
+      font-size: 1.7rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-top: -20px;
+    }
+  }
 `;

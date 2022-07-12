@@ -54,6 +54,7 @@ export default Trend;
 
 const Container = styled.div`
   gap: 2rem;
+
   .heading {
     align-items: center;
 
@@ -83,7 +84,7 @@ const Container = styled.div`
 
       img {
         width: 100%;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
       }
     }
@@ -119,6 +120,19 @@ const Container = styled.div`
       }
       p {
         font-size: 1.1rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 735px) {
+    .card {
+      flex-direction: column;
+      .img-container {
+        width: 100%;
+      }
+
+      .content {
+        width: 100%;
       }
     }
   }

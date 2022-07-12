@@ -96,4 +96,11 @@ const Container = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 765px) {
+    .img-container {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
 `;

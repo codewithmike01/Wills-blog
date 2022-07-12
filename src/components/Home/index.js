@@ -93,4 +93,16 @@ const Container = styled.div`
   .music-side-post {
     gap: 3rem;
   }
+
+  @media screen and (max-width: 994px) {
+    width: 90%;
+    margin: 0 auto;
+    .trend-finance,
+    .life-post-genre,
+    .tech-post-genre,
+    .latest-aticles {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
 `;

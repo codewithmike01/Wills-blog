@@ -20,7 +20,7 @@ function SidePostPreview({ trendArr, title, icon }) {
     </div>
   ));
   return (
-    <Container>
+    <Container className="flex column">
       <div className="finance flex opacity">
         {icon}
 
@@ -34,6 +34,7 @@ function SidePostPreview({ trendArr, title, icon }) {
 
 export default SidePostPreview;
 const Container = styled.div`
+  gap: 1.5rem;
   .finance {
     align-items: center;
     gap: 30px;

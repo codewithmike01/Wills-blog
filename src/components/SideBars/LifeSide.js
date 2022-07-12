@@ -84,7 +84,7 @@ function LifeSide() {
         <div className="comments-container flex column">{comments}</div>
       </div>
 
-      <div className="image-containaer">
+      <div className="image-container">
         <img src={BlogImage} alt="comments" />
         <h3>
           Slow Down
@@ -168,7 +168,7 @@ const Container = styled.div`
       }
     }
   }
-  .image-containaer {
+  .image-container {
     position: relative;
     width: 100%;
     cursor: pointer;
@@ -189,6 +189,13 @@ const Container = styled.div`
         display: block;
         margin-top: -20px;
       }
+    }
+  }
+
+  @media screen and (max-width: 765px) {
+    .image-container {
+      width: 60%;
+      margin: 0 auto;
     }
   }
 `;

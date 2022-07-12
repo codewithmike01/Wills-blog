@@ -126,8 +126,8 @@ const Container = styled.div`
     margin-top: 50px;
     width:50%;
     .load-more{
-      width:45%;
-      padding: 0.8rem  1rem 0.3rem 2rem;
+      width:40%;
+      padding: 0.8rem  1rem 0.6rem 2rem;
       margin: 0 auto;
       border:1px solid gray;
       align-items:center;
@@ -135,7 +135,7 @@ const Container = styled.div`
 
       p{
         margin:0;
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
 
       div{
@@ -149,5 +149,16 @@ const Container = styled.div`
         border:1px solid #ffa000;
       }
     }
+  }
+  @media screen and (max-width: 765px) {
+    .load-container{
+      width:60%;
+      padding: 0.8rem  0.5rem 0.6rem 1rem;
+  }
+
+  @media screen and (max-width: 735px) {
+    .load-container{
+      width:70%;
+      padding: 0.8rem  0.5rem 0.6rem 1rem;
   }
 `;

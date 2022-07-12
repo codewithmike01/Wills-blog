@@ -161,4 +161,15 @@ const Container = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 695px) {
+    .main-footer {
+      .social-footer {
+        width: 90%;
+      }
+
+      .copy-right-links {
+         font-size: 0.7rem;
+    }
+  }
 `;

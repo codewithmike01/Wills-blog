@@ -107,4 +107,21 @@ const Container = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 920px) {
+    .posts{
+      grid-template-columns: 1fr ;
+      .post-card{
+
+         .img-container {
+  
+          img{
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
 `;
