@@ -82,7 +82,8 @@ const Container = styled.div`
     }
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1025px) {
+    margin-top: 13rem;
     h1 {
       font-size: 2.3rem;
     }
@@ -109,6 +110,20 @@ const Container = styled.div`
     p {
       font-size: 1rem;
       margin-top: -20px;
+    }
+  }
+
+  @media screen and (max-width: 698px) {
+    margin-top: 13rem;
+  }
+
+  @media screen and (max-width: 473px) {
+    h1 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin-top: -9px;
     }
   }
 `;

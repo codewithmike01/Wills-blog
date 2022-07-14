@@ -150,7 +150,7 @@ const Container = styled.div`
       }
     }
   }
-  @media screen and (max-width: 765px) {
+  @media screen and (max-width: 769px) {
     .load-container{
       width:60%;
       padding: 0.8rem  0.5rem 0.6rem 1rem;

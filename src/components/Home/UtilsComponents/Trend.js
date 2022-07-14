@@ -39,13 +39,13 @@ function Trend({ trend, icon, genre, showGenre }) {
   return (
     <Container className="flex column">
       <div
-        style={{ display: icon && genre ? 'flex' : 'none' }}
         className="heading opacity"
+        style={{ display: icon && genre ? 'flex' : 'none' }}
       >
         {icon}
         <h2>{genre}</h2>
       </div>
-      {blogTrend}
+      <div className="post flex">{blogTrend}</div>
     </Container>
   );
 }
@@ -68,58 +68,65 @@ const Container = styled.div`
       margin-right: 30px;
     }
   }
-  .card {
-    gap: 1.5rem;
-    align-items: flex-start;
-    .img-container {
-      width: 30%;
-      height: 100%;
-      border-radius: 5px;
-      cursor: pointer;
 
-      &:hover {
-        transform: scale(1.05);
-        transition: transform 0.5s ease-in-out;
-      }
+  .post {
+    flex-direction: column;
+    gap: 2rem;
 
-      img {
+    .card {
+      gap: 1.5rem;
+      align-items: flex-start;
+      width: 100%;
+      .img-container {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-      }
-    }
-    .content {
-      width: 60%;
-      h2 {
-        margin-top: 0.8rem;
-        font-size: 1.3rem;
-        letter-spacing: 1.5px;
-        word-wrap: wrap;
+        border-radius: 5px;
         cursor: pointer;
 
-        &:hover {
-          color: #ffa301;
-        }
-      }
-      .content-date-year {
-        font-size: 1rem;
-        align-items: center;
-        .content-genre {
-          color: #000;
-          background-color: #ffa000;
-          padding: 0.2rem;
-          padding-left: 0.7rem;
-          padding-right: 1rem;
-          margin-right: 20px;
-          cursor: pointer;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
 
           &:hover {
-            background-color: #ffae00;
+            transform: scale(1.05);
+            transition: transform 0.5s ease-in-out;
           }
         }
       }
-      p {
-        font-size: 1.1rem;
+      .content {
+        width: 100%;
+        h2 {
+          margin-top: 0.8rem;
+          font-size: 1.3rem;
+          letter-spacing: 1.5px;
+          word-wrap: wrap;
+          cursor: pointer;
+
+          &:hover {
+            color: #ffa301;
+          }
+        }
+        .content-date-year {
+          font-size: 1rem;
+          align-items: center;
+          .content-genre {
+            color: #000;
+            background-color: #ffa000;
+            padding: 0.2rem;
+            padding-left: 0.7rem;
+            padding-right: 1rem;
+            margin-right: 20px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #ffae00;
+            }
+          }
+        }
+        p {
+          font-size: 1.1rem;
+        }
       }
     }
   }
@@ -133,6 +140,26 @@ const Container = styled.div`
 
       .content {
         width: 100%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 473px) {
+    .post {
+      .card {
+        .content {
+          h2 {
+            font-size: 1rem;
+          }
+
+          p {
+            font-size: 0.8rem;
+          }
+
+          .content-date-year {
+            font-size: 0.7rem;
+          }
+        }
       }
     }
   }

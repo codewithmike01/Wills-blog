@@ -88,6 +88,7 @@ const Container = styled.div`
     width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr;
+    gap: 3rem;
   }
 
   .music-side-post {
