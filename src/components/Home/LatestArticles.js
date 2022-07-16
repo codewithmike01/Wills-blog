@@ -151,6 +151,16 @@ const Container = styled.div`
     }
   }
 
+  @media screen and (max-width: 473px) {
+    .load-container{
+      .load-more{
+        width:100%;
+        margin:0;
+        padding:10px 0 10px 10px;
+      }
+    }
+  }
+
 
   @media screen and (max-width: 473px) {
 
@@ -185,7 +195,7 @@ const Container = styled.div`
     
     .load-container{
       .load-more{
-        width:80%;
+        width:75%;
       }
     }
    
@@ -193,6 +203,11 @@ const Container = styled.div`
 
 
   @media screen and (max-width: 769px) {
+    
+    .latest-sidebar {
+      width:100%;
+    
+    }
     .load-container{
       width:60%;
       padding: 0.8rem  0.5rem 0.6rem 1rem;
@@ -202,6 +217,7 @@ const Container = styled.div`
 
   @media screen and (max-width: 735px) {
 
+   
     .latest-sidebar {
       width:100%;
       .latest-post {

@@ -96,7 +96,7 @@ const Container = styled.div`
     }
     .finance-post {
       .finance-post-right {
-        width: 80%;
+        width: 40%;
       }
     }
   }

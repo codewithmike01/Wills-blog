@@ -96,6 +96,7 @@ const Container = styled.div`
   padding-bottom: 2rem;
 
   .main-footer {
+  
     gap: 2rem;
     width: 95%;
     margin: 0 auto;
@@ -103,6 +104,9 @@ const Container = styled.div`
     .social-footer {
       width: 70%;
       margin: 0 auto;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:1rem;
 
       li {
         list-style: none;
@@ -156,6 +160,32 @@ const Container = styled.div`
 
           &:hover {
             color: #ffa301;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 473px) {
+    .main-footer {
+      .footer-highlights {
+        gap: 2rem;
+        grid-template-columns: 1fr;
+      }
+
+      .copy-right-links {
+        flex-direction:column;
+        align-items:flex-start;
+   
+      }
+
+      .social-footer {
+        li{
+          span {
+            font-size:0.8rem;
+          }
+          p{
+            font-size:1rem;
           }
         }
       }
