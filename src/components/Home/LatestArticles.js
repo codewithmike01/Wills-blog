@@ -150,11 +150,55 @@ const Container = styled.div`
       }
     }
   }
+
+
+  @media screen and (max-width: 473px) {
+
+    .heading {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      svg {
+        font-size: 2.5rem;
+        margin-right: 30px;
+      }
+    }
+
+    .latest-sidebar {
+   
+      .latest-post {
+        .card {
+          .card-text {
+            h3 {
+              font-size: 1rem;
+            }
+
+            .content-date-year {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+
+    
+    .load-container{
+      .load-more{
+        width:80%;
+      }
+    }
+   
+  }
+
+
   @media screen and (max-width: 769px) {
     .load-container{
       width:60%;
       padding: 0.8rem  0.5rem 0.6rem 1rem;
+    }
   }
+
 
   @media screen and (max-width: 735px) {
 
@@ -165,10 +209,9 @@ const Container = styled.div`
       }
 
     }
-
-
     .load-container{
       width:70%;
       padding: 0.8rem  0.5rem 0.6rem 1rem;
+    }
   }
 `;

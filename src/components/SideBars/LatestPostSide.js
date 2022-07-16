@@ -97,6 +97,23 @@ const Container = styled.div`
     }
   }
 
+  @media screen and (max-width: 473px) {
+    .img-container {
+      img {
+        height: 100%;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        top: 2rem;
+        left: 20px;
+        span {
+          margin-top: -10px;
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 765px) {
     .img-container {
       width: 60%;
