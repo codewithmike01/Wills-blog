@@ -82,7 +82,7 @@ const Container = styled.div`
 
           img {
             width: 100%;
-            height: 160px;
+            height: 100%;
             object-fit: cover;
           }
         }
@@ -157,6 +157,16 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 735px) {
+
+    .latest-sidebar {
+      width:100%;
+      .latest-post {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
     .load-container{
       width:70%;
       padding: 0.8rem  0.5rem 0.6rem 1rem;

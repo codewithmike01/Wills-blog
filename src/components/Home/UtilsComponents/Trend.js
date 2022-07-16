@@ -17,9 +17,9 @@ function Trend({ trend, icon, genre, showGenre }) {
         </div>
 
         <div className="content">
-          <h2 type="button" onClick={() => navigate(`/${genre}/${id}`)}>
+          <h3 type="button" onClick={() => navigate(`/${genre}/${id}`)}>
             {title}
-          </h2>
+          </h3>
 
           <div className="content-date-year flex">
             <span
@@ -96,7 +96,7 @@ const Container = styled.div`
       }
       .content {
         width: 100%;
-        h2 {
+        h3 {
           margin-top: 0.8rem;
           font-size: 1.3rem;
           letter-spacing: 1.5px;
@@ -145,10 +145,21 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 473px) {
+    .heading {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      svg {
+        font-size: 2.5rem;
+        margin-right: 30px;
+      }
+    }
+
     .post {
       .card {
         .content {
-          h2 {
+          h3 {
             font-size: 1rem;
           }
 

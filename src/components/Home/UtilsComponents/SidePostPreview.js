@@ -85,15 +85,15 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 778px) {
-    .finance-post {
-      .finance-post-right {
-        width: 40%;
-        height: 150px;
+    .finance {
+      h3 {
+        font-size: 1.4rem;
+      }
+
+      svg {
+        font-size: 2rem;
       }
     }
-  }
-
-  @media screen and (max-width: 778px) {
     .finance-post {
       .finance-post-right {
         width: 80%;

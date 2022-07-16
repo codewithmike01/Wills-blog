@@ -192,6 +192,43 @@ const Container = styled.div`
     }
   }
 
+  @media screen and (max-width: 473px) {
+    .socials {
+      li {
+        font-size: 0.8rem;
+        svg {
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .recent-comments {
+      h2 {
+        font-size: 1.5rem;
+      }
+      .comments-container {
+        .comment {
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .image-container {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      h3 {
+        font-size: 1.4rem;
+        top: 3rem;
+        left: 20px;
+        span {
+          margin-top: -10px;
+        }
+      }
+  }
+
   @media screen and (max-width: 765px) {
     .image-container {
       width: 60%;
