@@ -148,16 +148,15 @@ export default GeneralPosts;
 
 const Container = styled.div`
   margin-top: -200px;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  width: 95%;
+  margin: 0 auto;
   gap: 7rem;
 
   .main-post {
     display: grid;
     grid-template-columns: 2fr 1fr;
-
     margin-top: 15rem;
-    gap: 6.5rem;
+    gap: 3rem;
 
     .post-contianer {
       h1 {
@@ -187,17 +186,17 @@ const Container = styled.div`
       .image-post {
         margin-top: 50px;
         width: 100%;
-        height: 355px;
+        height: 100%;
 
         img {
           width: 100%;
-          height: 100%;
           object-fit: cover;
         }
       }
     }
 
     .post-socials {
+      flex-wrap: wrap;
       gap: 25px;
       margin-top: 20px;
       button {
@@ -352,6 +351,26 @@ const Container = styled.div`
         span {
           display: block;
           margin-top: -20px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 994px) {
+    .main-post {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    .section-comment {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 437px) {
+    .main-post {
+      .post-contianer {
+        h1 {
+          font-size: 1.5rem;
         }
       }
     }
