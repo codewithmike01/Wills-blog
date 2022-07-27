@@ -155,9 +155,8 @@ const Container = styled.div`
   .main-post {
     display: grid;
     grid-template-columns: 2fr 1fr;
-
     margin-top: 15rem;
-    gap: 6.5rem;
+    gap: 3rem;
 
     .post-contianer {
       h1 {
@@ -187,17 +186,17 @@ const Container = styled.div`
       .image-post {
         margin-top: 50px;
         width: 100%;
-        height: 355px;
+        height: 100%;
 
         img {
           width: 100%;
-          height: 100%;
           object-fit: cover;
         }
       }
     }
 
     .post-socials {
+      flex-wrap: wrap;
       gap: 25px;
       margin-top: 20px;
       button {
@@ -354,6 +353,16 @@ const Container = styled.div`
           margin-top: -20px;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 994px) {
+    .main-post {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    .section-comment {
+      grid-template-columns: 1fr;
     }
   }
 `;
