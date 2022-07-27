@@ -40,4 +40,12 @@ const Container = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 994px) {
+    .grid-image {
+      .grid-img {
+        height: 100%;
+      }
+    }
+  }
 `;
