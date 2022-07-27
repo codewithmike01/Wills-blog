@@ -365,4 +365,14 @@ const Container = styled.div`
       grid-template-columns: 1fr;
     }
   }
+
+  @media screen and (max-width: 437px) {
+    .main-post {
+      .post-contianer {
+        h1 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
 `;
