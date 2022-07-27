@@ -63,4 +63,10 @@ const Container = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 994px) {
+    .image-containaer {
+      margin-top: 30px;
+    }
+  }
 `;
