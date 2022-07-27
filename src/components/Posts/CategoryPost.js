@@ -54,14 +54,14 @@ const Container = styled.div`
   .main {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 6.5rem;
+    gap: 3rem;
     .left-side {
       h1 {
         text-transform: capitalize;
       }
 
       .all-genre {
-        font-size: 1rem;
+        font-size: 0.8rem;
         align-items: center;
         .content-genre {
           color: #000;
@@ -83,6 +83,10 @@ const Container = styled.div`
         width: 100%;
         height: 355px;
 
+        h2 {
+          font-size: 1.3rem;
+        }
+
         h2:hover {
           cursor: pointer;
           color: #ffae00;
@@ -103,5 +107,15 @@ const Container = styled.div`
         margin-top: 150px;
       }
     }
+  }
+
+  @media screen and (max-width: 994px) {
+    .main {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 473px) {
   }
 `;
