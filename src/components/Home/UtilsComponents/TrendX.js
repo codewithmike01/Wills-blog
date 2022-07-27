@@ -139,7 +139,7 @@ const Container = styled.div`
     }
   }
 
-  @media screen and (max-width: 920px) {
+  @media screen and (max-width: 994px) {
     .posts{
       grid-template-columns: 1fr ;
       .post-card{

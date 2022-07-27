@@ -69,6 +69,7 @@ const Container = styled.div`
     .finance-post-right {
       width: 80%;
       height: 100px;
+      object-fit: cover;
 
       img {
         width: 100%;
@@ -97,6 +98,15 @@ const Container = styled.div`
     .finance-post {
       .finance-post-right {
         width: 40%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 994px) {
+    .finance-post {
+      .finance-post-right {
+        width: 50%;
+        height: 150px;
       }
     }
   }
