@@ -59,7 +59,7 @@ const Container = styled.div`
         z-index: 3;
 
         h5 {
-          color:  ${(menuState) => (menuState ? '#ffb000' : 'gray')};
+          color: #ffb000;
         }
           
         }
