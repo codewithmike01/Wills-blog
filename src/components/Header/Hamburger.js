@@ -1,10 +1,16 @@
 /* eslint-disable react/self-closing-comp */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-function Hamburger() {
+function Hamburger(props) {
+  const { showMenu, menuState } = props;
   return (
-    <Container className="flex column">
+    <Container
+      className="flex column"
+      style={{ display: menuState ? 'none' : 'flex' }}
+      onClick={() => showMenu()}
+    >
       <span className="ham-line"></span>
       <span className="ham-line"></span>
       <span className="ham-line"></span>
@@ -24,7 +30,12 @@ const Container = styled.div`
     background-color: #fff;
   }
 
-  @media and screen (max-width: 776px) {
+  @media screen and (max-width: 745px) {
     display: flex;
   }
 `;
+
+Hamburger.propTypes = {
+  showMenu: PropTypes.func.isRequired,
+  menuState: PropTypes.bool.isRequired,
+};
