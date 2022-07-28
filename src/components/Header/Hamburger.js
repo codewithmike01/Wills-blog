@@ -1,28 +1,29 @@
 /* eslint-disable react/self-closing-comp */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import Navbar from '../Navbar/Navbar';
 
-function Hamburger(props) {
-  const { showMenu, menuState } = props;
+function Hamburger() {
+  const [menuState, setMeunuState] = useState(false);
+
+  const handleMenu = () => {
+    setMeunuState((prevState) => !prevState);
+  };
   return (
-    <Container
-      className="flex column"
-      style={{ display: menuState ? 'none' : 'flex' }}
-      onClick={() => showMenu()}
-    >
-      <span className="ham-line"></span>
-      <span className="ham-line"></span>
-      <span className="ham-line"></span>
-    </Container>
+    <>
+      <Container className="flex column" onClick={() => handleMenu()}>
+        <span className="ham-line"></span>
+        <span className="ham-line"></span>
+        <span className="ham-line"></span>
+      </Container>
+      <Navbar menuState={menuState} handleMenu={handleMenu} />
+    </>
   );
 }
 
 export default Hamburger;
 const Container = styled.div`
-  gap: 7px;
   display: none;
-  cursor: pointer;
   .ham-line {
     display: block;
     height: 2px;
@@ -31,11 +32,9 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 745px) {
-    display: flex;
+    display: ${({ menuState }) => (menuState ? 'none' : 'flex')};
+    flex-direction: column;
+    gap: 7px;
+    margin-top: -41px;
   }
 `;
-
-Hamburger.propTypes = {
-  showMenu: PropTypes.func.isRequired,
-  menuState: PropTypes.bool.isRequired,
-};

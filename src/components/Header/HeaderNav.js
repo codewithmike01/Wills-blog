@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
+
 import SocialLink from './SocialLink';
 import Hamburger from './Hamburger';
 
 function HeaderNav() {
-  const [menuState, setMeunuState] = useState(false);
-
-  const handleMenu = () => {
-    setMeunuState((prevState) => !prevState);
-  };
-
   return (
     <Container className="header-nav flex j-between">
       <div className="nav-left">
@@ -22,11 +16,8 @@ function HeaderNav() {
         </Link>
       </div>
 
-      <Navbar menuState={menuState} closeMenu={handleMenu} />
-
+      <Hamburger />
       <SocialLink />
-
-      <Hamburger showMenu={handleMenu} menuState={menuState} />
     </Container>
   );
 }
@@ -39,10 +30,13 @@ const Container = styled.div`
   margin: 0 auto;
   align-items: center;
   .nav-left {
+    z-index:3;
     h5 {
+      color: gray;
       margin-top: -10px;
       font-size: 1.2rem;
       opacity: 0.5;
+    
     }
     .nav-home {
       font-size: 2rem;
@@ -52,14 +46,14 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 745px) {
+   
     .nav-left {
       .nav-home {
-        position: fixed;
-        top: 0;
+        
         z-index: 3;
 
         h5 {
-          color: #ffb000;
+          color: #ffa301;
         }
           
         }

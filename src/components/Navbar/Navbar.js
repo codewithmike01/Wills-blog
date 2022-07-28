@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
 
-function Navbar({ menuState, closeMenu }) {
+function Navbar({ menuState, handleMenu }) {
   const links = [
     { name: 'Tech', link: '/category/technology' },
     { name: 'Entertainment', link: '/category/entertainment' },
@@ -12,25 +12,27 @@ function Navbar({ menuState, closeMenu }) {
   ];
 
   return (
-    <Container style={{ display: menuState ? 'block' : 'none' }}>
-      <nav className="flex">
-        <button type="button" className="cancel" onClick={() => closeMenu()}>
-          {' '}
-          &times;
-        </button>
+    <>
+      <Container menuState={menuState}>
+        <nav className="flex">
+          <button type="button" className="cancel" onClick={() => handleMenu()}>
+            {' '}
+            &times;
+          </button>
 
-        {links.map(({ name, link }) => (
-          <Link
-            to={link}
-            key={name}
-            className="nav-link"
-            onClick={() => closeMenu()}
-          >
-            {name}
-          </Link>
-        ))}
-      </nav>
-    </Container>
+          {links.map(({ name, link }) => (
+            <Link
+              to={link}
+              key={name}
+              className="nav-link"
+              onClick={() => handleMenu()}
+            >
+              {name}
+            </Link>
+          ))}
+        </nav>
+      </Container>
+    </>
   );
 }
 
@@ -60,6 +62,7 @@ const Container = styled.div`
 
   @media screen and (max-width: 745px) {
     position: fixed;
+    display: ${({ menuState }) => (menuState ? 'block' : 'none')};
     z-index: 2;
     top: 0;
     left: 0;
@@ -86,6 +89,6 @@ const Container = styled.div`
 `;
 
 Navbar.propTypes = {
-  closeMenu: PropTypes.func.isRequired,
   menuState: PropTypes.bool.isRequired,
+  handleMenu: PropTypes.func.isRequired,
 };
