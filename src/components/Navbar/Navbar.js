@@ -70,6 +70,7 @@ const Container = styled.div`
     height: 100vh;
     background-color: gray;
     padding: 75px 25px;
+    transition: all 0.5s ease-in-out;
 
     nav {
       flex-direction: column;

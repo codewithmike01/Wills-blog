@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -6,17 +6,22 @@ import SocialLink from './SocialLink';
 import Hamburger from './Hamburger';
 
 function HeaderNav() {
+  const [menuState, setMeunuState] = useState(false);
+
+  const handleMenu = () => {
+    setMeunuState((prevState) => !prevState);
+  };
   return (
     <Container className="header-nav flex j-between">
       <div className="nav-left">
-        <Link to="/" className="nav-home">
+        <Link to="/" className="nav-home" onClick={() => handleMenu()}>
           {' '}
           WillsBlog
           <h5>newsHub</h5>
         </Link>
       </div>
 
-      <Hamburger />
+      <Hamburger menuState={menuState} handleMenu={handleMenu} />
       <SocialLink />
     </Container>
   );
