@@ -18,7 +18,7 @@ def create_app(test_config=None):
     @app.after_request
     def after_request(response):
         response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization,true")
-        response.headers.add("Access-Control-Allow-Headers","Content-Type,Authorization,true")
+        response.headers.add("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE,OPTIONS")        
         return response
 
 
@@ -35,7 +35,7 @@ def create_app(test_config=None):
         new_github_link = body.get('github_link',None)
         new_role = body.get('role',None)
 
-
+       
         try:
             user = User(
                 first_name = new_first_name,
@@ -48,6 +48,10 @@ def create_app(test_config=None):
                 github_link= new_github_link,
                 role = new_role
             )
+
+            
+            print('hello there')
+
 
             user.insert()
 

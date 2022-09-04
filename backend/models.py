@@ -1,7 +1,6 @@
 from email.policy import default
 from enum import unique
 import os
-from xmlrpc.client import Boolean
 from sqlalchemy import Column, String, Integer,Boolean, create_engine
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -40,10 +39,10 @@ class User(db.Model):
   github_link = Column(String)
   role = Column(String, default='user')
 
-  def __init__(self, first_name, last_name, nick_name, facebook_link,linkedIn_link,github_link, instagram_link, role = 'user', disable_account=False):
+  def __init__(self, first_name, last_name, nick_name, facebook_link,linkedIn_link,github_link, instagram_link, role, disable_account):
     self.first_name=first_name
     self.last_name=last_name
-    self.nick_name=nick_name,
+    self.nick_name=nick_name
     self.linkedIn_link=linkedIn_link
     self.facebook_link=facebook_link
     self.github_link=github_link
