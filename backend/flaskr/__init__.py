@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from flask_cors import CORS
 import random
-from models import setup_db, User
+from models import setup_db, User, Category, Post
 
 
 def create_app(test_config=None):
@@ -21,7 +21,7 @@ def create_app(test_config=None):
         response.headers.add("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE,OPTIONS")        
         return response
 
-
+# Create User
     @app.route('/users', methods=['POST'])
     def create_users():
         body = request.get_json()
@@ -49,10 +49,7 @@ def create_app(test_config=None):
                 role = new_role
             )
 
-            
-            print('hello there')
-
-
+        
             user.insert()
 
             return jsonify({
@@ -62,6 +59,37 @@ def create_app(test_config=None):
 
         except:
             abort(404)
+
+#  Create Category
+
+    @app.route('/categories', methods=['POST'])
+    def create_category():
+        body = request.get_json()
+
+        new_type = body.get('type', None).capitalize()
+
+        try:
+            category = Category(type=new_type)
+
+            category.insert()
+
+            return jsonify({
+                'success': True
+            })
+
+        except:
+            abort(404)
+
+    
+    @app.errorhandler(404)
+    def not_found():
+        return jsonify({
+            'success': False,
+            'error': 404,
+            'message': 'Not Found'
+        })
+
+
 
 
     return app

@@ -1,7 +1,7 @@
 from email.policy import default
 from enum import unique
 import os
-from sqlalchemy import Column, String, Integer,Boolean, create_engine
+from sqlalchemy import Column, String, Integer,Boolean, ForeignKey, create_engine
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import json
@@ -76,13 +76,116 @@ class User(db.Model):
     }
 
 
+
+
 """
-Posts
+Comments
 """
 
 """
-Commets
+
+
+class Comment(db.Model):
+  __tablename__ = 'comments'
+
+  id = Column(Integer, primary_key= True)
+  text = Column(String)
+  user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+  post_id = Column(Integer, ForeignKey('post.id'), nullable= False)
+
+
+  def __init__(self, text, user_id, post_id):
+      self.text = text
+      self.user_id = user_id
+      self.post_id = post_id
+
+  def insert(self):
+    db.session.add(self)
+    db.session.commit()
+
+  def delete(self):
+    db.session.delete(self)
+    db.session.commit()
+  
+  def update(self):
+    db.session.commit()
+
+  def format(self):
+    return ({
+      'id': self.id,
+      'user_id': self.user_id,
+      'post_id': self.post_id
+    })
+
 """
+
+"""
+Categories
+"""
+
+class Category(db.Model):
+  __tablename__ = 'categories'
+
+  id = Column(Integer, primary_key= True)
+  type = Column(String)
+
+  def __init__(self, type):
+    self.type = type
+
+  
+  def insert(self):
+    db.session.add(self)
+    db.session.commit()
+
+  def delete(self):
+    db.session.delete(self)
+    db.session.commit()
+
+  def format(self):
+    return({
+      'id': self.id,
+      'type': self.type
+    })
+
+
+"""
+Posts
+"""
+class Post(db.Model):
+  __tablename__ = 'posts'
+
+  id = Column(Integer, primary_key=True)
+  title = Column(String)
+  content = Column(String)
+  category_id = Column(Integer, ForeignKey('categories.id'))
+  like_count = Column(Integer)
+
+
+  def  __init__(self, title, content, category_id):
+    self.title = title
+    self.content = content
+    self.category_id = category_id
+ 
+
+  def insert(self):
+    db.session.add(self)
+    db.session.commit()
+
+  def delete(self):
+    db.session.delete(self)
+    db.session.commit()
+  
+  def update(self):
+    db.session.commit()
+
+
+  def format(self):
+    return({
+      'id': self.id,
+      'title': self.title,
+      'content': self.content,
+      'category_id': self.category_id
+    })
 
 
     
