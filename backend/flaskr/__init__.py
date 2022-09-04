@@ -95,7 +95,26 @@ def create_app(test_config=None):
         else:
             abort(404)
 
+    # DELET Category
+    @app.route('/categories/<int:category_id>', methods=['DELETE'])
+    def delete_category(category_id):
+        category = Category.query.get(category_id)
+
+        if category is not None:
+            category.delete()
+
+            return jsonify({
+                'success':True,
+                'delete_id': category_id
+            })
+        else:
+            abort(404)
     
+
+
+
+    # Error Handlers
+
     @app.errorhandler(404)
     def not_found():
         return jsonify({
