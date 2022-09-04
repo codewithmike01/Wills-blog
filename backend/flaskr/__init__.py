@@ -3,9 +3,10 @@ from random import random
 from unicodedata import category
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
+
 from flask_cors import CORS
 import random
-from models import setup_db
+from models import setup_db, User
 
 
 def create_app(test_config=None):
