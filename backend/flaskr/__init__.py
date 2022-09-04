@@ -80,6 +80,21 @@ def create_app(test_config=None):
         except:
             abort(404)
 
+    # GET categories
+    @app.route('/categories', methods=['GET'])
+    def get_categories():
+        categories = Category.query.order_by(Category.id).all()
+
+        categories_formated = [category.format()  for category in categories]
+
+        if categories is not None:
+            return jsonify({
+                'success': True,
+                'categories': categories_formated
+            })
+        else:
+            abort(404)
+
     
     @app.errorhandler(404)
     def not_found():
