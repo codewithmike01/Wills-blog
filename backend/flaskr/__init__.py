@@ -74,7 +74,9 @@ def create_app(test_config=None):
             category.insert()
 
             return jsonify({
-                'success': True
+                'success': True,
+                'category_id': category.id,
+                'type': category.type
             })
 
         except:

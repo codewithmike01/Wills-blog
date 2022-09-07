@@ -42,8 +42,27 @@ class WillsTestCase(unittest.TestCase):
       "nick_name": "lewisCreed1{}".format(value)
       })
 
-    self.assertEqual(res.status_code, 200)
+    data = json.loads(res.data)
 
+    self.assertEqual(res.status_code, 200)
+    self.assertEqual(data['success'], True)
+    self.assertTrue(data['user'])
+
+# Category Test
+  def test_get_Categories(self):
+    res = self.client().get('/categories')
+    data = json.loads(res.data)
+
+    self.assertEqual(res.status_code, 200)
+    self.assertEqual(data['success'], True)
+
+  def test_create_category(self):
+    res = self.client().post('/categories', json= {"type":"Jokes"})
+    data = json.loads(res.data)
+
+    self.assertEqual(res.status_code, 200)
+    self.assertEqual(data['type'],"Jokes")
+    self.assertTrue(data['category_id'])
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
