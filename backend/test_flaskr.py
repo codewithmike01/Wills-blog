@@ -5,7 +5,7 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 import random
 from flaskr import create_app
-from models import setup_db, User, Category
+from models import setup_db, User, Category, Post
 
 
 class WillsTestCase(unittest.TestCase):
@@ -29,25 +29,25 @@ class WillsTestCase(unittest.TestCase):
   """
   Test
   """
-  def test_create_user(self):
-    value = random.randint(0,30)
-    res = self.client().post('/users', json={
-      "first_name": "Sammy", 
-      "last_name": "Lewis",
-      "role": "user",
-      "disable_account": False,
-      "facebook_link": "https://me",
-      "linkedIn_link":"https://me",
-      "instagram_link":"https://",
-      "github_link": "https://me",
-      "nick_name": "lewisCreed{}".format(value)
-      })
+  # def test_create_user(self):
+  #   value = random.randint(0,30)
+  #   res = self.client().post('/users', json={
+  #     "first_name": "Sammy", 
+  #     "last_name": "Lewis",
+  #     "role": "user",
+  #     "disable_account": False,
+  #     "facebook_link": "https://me",
+  #     "linkedIn_link":"https://me",
+  #     "instagram_link":"https://",
+  #     "github_link": "https://me",
+  #     "nick_name": "lewisCreed{}".format(value)
+  #     })
 
-    data = json.loads(res.data)
+  #   data = json.loads(res.data)
 
-    self.assertEqual(res.status_code, 200)
-    self.assertEqual(data['success'], True)
-    self.assertTrue(data['user'])
+  #   self.assertEqual(res.status_code, 200)
+  #   self.assertEqual(data['success'], True)
+  #   self.assertTrue(data['user'])
 
 # Category Test
   def test_get_Categories(self):
@@ -85,6 +85,35 @@ class WillsTestCase(unittest.TestCase):
 
     self.assertEqual(res.status_code, 200)
     self.assertEqual(data['success'], True)
+
+  # Get
+  def test_get_posts(self):
+    res = self.client().get('/posts')
+    data = json.loads(res.data)
+
+    self.assertEqual(res.status_code, 200)
+    self.assertTrue(data['posts'])
+
+  # GET exceed pagagination
+  def test_404_pagination(self):
+    res = self.client().get('/posts?page=2000')
+    data = json.loads(res.data)
+
+    self.assertEqual(data['success'], False)
+    self.assertEqual(data['message'], 'Posts Page Limit Reached')
+
+  # Delete
+  def test_delete_post(self):
+    res = self.client().delete('posts/3')
+
+    post = Post.query.filter(Post.id == 3).one_or_none()
+
+    self.assertEqual(post, None)
+
+  
+    
+
+
 
   
 

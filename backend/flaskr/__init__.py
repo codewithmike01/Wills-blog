@@ -9,6 +9,19 @@ import random
 from models import setup_db, User, Category, Post
 
 
+# Pagination
+POSTS_PER_PAGE = 6
+def pagination_posts(request, selection):
+    page = request.args.get('page',1, type=int)
+    start = (page - 1) * POSTS_PER_PAGE
+    end = start + POSTS_PER_PAGE
+
+    posts = [post.format() for post in selection]
+    current_posts = posts[start:end]
+
+    return current_posts
+
+
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
@@ -115,7 +128,7 @@ def create_app(test_config=None):
                 'message': 'Id Not Found'
             })
 
-    
+# Post Endpoint
     @app.route('/posts', methods=['POST'])
     def create_post():
         body = request.get_json()
@@ -140,11 +153,52 @@ def create_app(test_config=None):
                 'post': post.format()
             })
 
-
         except:
             abort(422)
-    
 
+    # Get Posts
+    @app.route('/posts', methods=['GET'])
+    def get_posts():
+        posts = Post.query.all()
+
+        try: 
+            current_posts = pagination_posts(request, posts)
+
+            if len(current_posts) == 0:
+                return jsonify({
+                    'success': False,
+                    'message': 'Posts Page Limit Reached',
+                })
+            
+            return jsonify({
+                'success': True,
+                'posts': current_posts,
+                'total_posts': len(Post.query.all())
+            })
+
+        except:
+            abort(500)
+    
+    @app.route('/posts/<int:post_id>',methods=['DELETE'])
+    def delete_post(post_id):
+        post = Post.query.get(post_id)
+
+        if post is None:
+            return jsonify({
+                'success':False,
+                'message': 'Post not Found'
+            })
+
+        
+        post.delete()
+
+        return jsonify({
+            "success":True,
+            "post_id": post_id
+        })
+        
+
+            
 
 
     # Error Handlers
@@ -155,7 +209,24 @@ def create_app(test_config=None):
             'success': False,
             'error': 404,
             'message': 'Not Found'
-        })
+        }),404
+
+    @app.errorhandler(422)
+    def unprocessable():
+        return jsonify({
+            'success': False,
+            'error': 422,
+            'message': 'Unprocessable entity'
+        }),422
+
+    @app.errorhandler(500)
+    def unprocessable():
+        return jsonify({
+            'success': False,
+            'error': 500,
+            'message': 'Server Error'
+        }),500
+
 
 
 
