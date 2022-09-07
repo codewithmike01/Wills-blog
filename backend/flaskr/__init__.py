@@ -110,7 +110,10 @@ def create_app(test_config=None):
                 'delete_id': category_id
             })
         else:
-            abort(404)
+            return jsonify({
+                'success': False,
+                'message': 'Id Not Found'
+            })
     
 
 

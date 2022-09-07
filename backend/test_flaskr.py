@@ -1,4 +1,5 @@
 import os
+from unicodedata import category
 import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
@@ -29,7 +30,7 @@ class WillsTestCase(unittest.TestCase):
   Test
   """
   def test_create_user(self):
-    value = random.randint(0,20)
+    value = random.randint(0,30)
     res = self.client().post('/users', json={
       "first_name": "Sammy", 
       "last_name": "Lewis",
@@ -39,7 +40,7 @@ class WillsTestCase(unittest.TestCase):
       "linkedIn_link":"https://me",
       "instagram_link":"https://",
       "github_link": "https://me",
-      "nick_name": "lewisCreed1{}".format(value)
+      "nick_name": "lewisCreed{}".format(value)
       })
 
     data = json.loads(res.data)
@@ -63,6 +64,20 @@ class WillsTestCase(unittest.TestCase):
     self.assertEqual(res.status_code, 200)
     self.assertEqual(data['type'],"Jokes")
     self.assertTrue(data['category_id'])
+  
+  def test_delete_category(self):
+    res = self.client().delete('/categories/7')
+    data = json.loads(res.data)
+    
+    category = Category.query.filter(Category.id == 7).one_or_none()
+
+    self.assertEqual(category, None)
+    self.assertEqual(data['message'], 'Id Not Found')
+
+
+
+  
+
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
