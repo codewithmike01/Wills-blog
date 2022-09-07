@@ -161,10 +161,11 @@ class Post(db.Model):
   like_count = Column(Integer)
 
 
-  def  __init__(self, title, content, category_id):
+  def  __init__(self, title, content, category_id, like_count):
     self.title = title
     self.content = content
     self.category_id = category_id
+    self.like_count = like_count
  
 
   def insert(self):
@@ -184,7 +185,8 @@ class Post(db.Model):
       'id': self.id,
       'title': self.title,
       'content': self.content,
-      'category_id': self.category_id
+      'category_id': self.category_id,
+      'like_count': self.like_count
     })
 
 

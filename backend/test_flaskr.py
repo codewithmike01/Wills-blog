@@ -68,13 +68,23 @@ class WillsTestCase(unittest.TestCase):
   def test_delete_category(self):
     res = self.client().delete('/categories/7')
     data = json.loads(res.data)
-    
+
     category = Category.query.filter(Category.id == 7).one_or_none()
 
     self.assertEqual(category, None)
     self.assertEqual(data['message'], 'Id Not Found')
 
+  def test_create_post(self):
+    res = self.client().post('/posts', json = {
+      "title": "Gregory",
+      "content":"Ilorem Ipsum Ipsum Lorems LOresm Ipsum LOresm Ipsum LOresm Ipsum LOresm Ipsum",
+      "category_id": 3,
+      "like_count": 0
+     })
+    data = json.loads(res.data)
 
+    self.assertEqual(res.status_code, 200)
+    self.assertEqual(data['success'], True)
 
   
 

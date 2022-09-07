@@ -114,6 +114,35 @@ def create_app(test_config=None):
                 'success': False,
                 'message': 'Id Not Found'
             })
+
+    
+    @app.route('/posts', methods=['POST'])
+    def create_post():
+        body = request.get_json()
+
+        new_title = body.get('title', None)
+        new_content = body.get('content', None)
+        new_like_count = body.get('like_count',None)
+        new_category_id = body.get('category_id', None)
+
+        try:
+            post = Post(
+                title=new_title,
+                content=new_content,
+                like_count = new_like_count,
+                category_id=new_category_id
+            )
+
+            post.insert()
+
+            return jsonify({
+                'success':True,
+                'post': post.format()
+            })
+
+
+        except:
+            abort(422)
     
 
 
