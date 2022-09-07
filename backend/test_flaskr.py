@@ -74,6 +74,9 @@ class WillsTestCase(unittest.TestCase):
     self.assertEqual(category, None)
     self.assertEqual(data['message'], 'Id Not Found')
 
+#  POST ENDPOINTS
+
+  # CREATE Post
   def test_create_post(self):
     res = self.client().post('/posts', json = {
       "title": "Gregory",
