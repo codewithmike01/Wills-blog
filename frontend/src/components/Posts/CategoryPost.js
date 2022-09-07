@@ -117,5 +117,9 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 473px) {
+    .main {
+      margin-top: 40px;
+    }
+    margin-top: 40px;
   }
 `;
