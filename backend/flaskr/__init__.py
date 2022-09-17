@@ -21,6 +21,22 @@ def pagination_posts(request, selection):
 
     return current_posts
 
+# Auth Get JWT
+def get_jwt(request):
+    if 'Authorization' not in request.headers:
+            abort(401)
+
+    auth_header = request.headers['Authorization']
+    auth_path = auth_header.split(' ')
+   
+
+    if len(auth_path) != 2:
+        abort(401)
+
+    if auth_path[0].lower() != 'bearer':
+        abort(404)
+    
+    return(auth_path)
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -197,22 +213,33 @@ def create_app(test_config=None):
             "post_id": post_id
         })
         
-
-            
+# Header JWT Check
+    @app.route('/headers', methods=['GET'])
+    def headers():
+        jwt = get_jwt(request)
+        return (jwt[1])              
 
 
     # Error Handlers
 
     @app.errorhandler(404)
-    def not_found():
+    def not_found(error):
         return jsonify({
             'success': False,
             'error': 404,
             'message': 'Not Found'
         }),404
 
+    @app.errorhandler(401)
+    def unauthorized(error):
+        return jsonify({
+            'success': False,
+            'error': 401,
+            'message': 'Unauthorized'
+        }),401
+
     @app.errorhandler(422)
-    def unprocessable():
+    def unprocessable(error):
         return jsonify({
             'success': False,
             'error': 422,
@@ -220,7 +247,7 @@ def create_app(test_config=None):
         }),422
 
     @app.errorhandler(500)
-    def unprocessable():
+    def unprocessable(error):
         return jsonify({
             'success': False,
             'error': 500,
@@ -229,6 +256,7 @@ def create_app(test_config=None):
 
 
 
+    
 
 
     return app
