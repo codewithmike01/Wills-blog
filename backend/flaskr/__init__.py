@@ -1,3 +1,4 @@
+from functools import wraps
 import os
 from random import random
 from unicodedata import category
@@ -36,7 +37,7 @@ def get_jwt(request):
     if auth_path[0].lower() != 'bearer':
         abort(404)
     
-    return(auth_path)
+    return(auth_path[1])
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -212,12 +213,21 @@ def create_app(test_config=None):
             "success":True,
             "post_id": post_id
         })
+
+    # Decorator creation
+    def requires_auth(f):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            jwt = get_jwt(request)
+            return f(jwt,*args, **kwargs)
+        return wrapper
         
 # Header JWT Check
     @app.route('/headers', methods=['GET'])
-    def headers():
-        jwt = get_jwt(request)
-        return (jwt[1])              
+    @requires_auth
+    def headers(jwt):
+        
+        return (jwt)              
 
 
     # Error Handlers
