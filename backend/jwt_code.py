@@ -17,7 +17,7 @@ class AuthError(Exception):
     self.status_code = status_code
 
 # TOKEN GENERATED FROM LOGIN (FOR TEST IF VALID)
-token="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkpPa09kR3laclZsR2ZORFNpSlhtUyJ9.eyJpc3MiOiJodHRwczovL2Rldi01cGxoZS15dS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMxOWI5YzZmNTgyOGY2Zjk1NDY3MDQ4IiwiYXVkIjoid2lsbHMtYmxvZyIsImlhdCI6MTY2MjY0MjcyNCwiZXhwIjoxNjYyNjQ5OTI0LCJhenAiOiJaSlVKYnh1dFlDMmoxcXdBaXNlczlFb3V2WUN0eGFxayIsInNjb3BlIjoiIn0.LIWSYki9ZnMtZuB8n01UdnRQOIgCZasGjrr33Ulnfhi5yI0enmfqReWdkqziUK1ExEmy-j5AVCNFNO6ZEMGvgOyVJtAQOkdvi5ey9FpvY2ZyUo1uKlVeQavNu6rL5YfwvMPR4isfTmgeQyj87hbvHf2gT5yaZGBO2JtvedOcOsu_S9N10dh2KyZW0lseHVfF4HANUU4jog3r8QcgkUCT29BkecYMLa7gpb3MissZFWOZnHoiS38pNScfV2fnVbqCzMMeKl3YdSrIB6pgW58dKEh_pFzJWBMsGr4WeCv3UslOXnR8gsOibscdRXjJWl74-etNUL6S0_8MjIqntYOFwg"
+# token="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkpPa09kR3laclZsR2ZORFNpSlhtUyJ9.eyJpc3MiOiJodHRwczovL2Rldi01cGxoZS15dS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMxOWI5YzZmNTgyOGY2Zjk1NDY3MDQ4IiwiYXVkIjoid2lsbHMtYmxvZyIsImlhdCI6MTY2MjY0MjcyNCwiZXhwIjoxNjYyNjQ5OTI0LCJhenAiOiJaSlVKYnh1dFlDMmoxcXdBaXNlczlFb3V2WUN0eGFxayIsInNjb3BlIjoiIn0.LIWSYki9ZnMtZuB8n01UdnRQOIgCZasGjrr33Ulnfhi5yI0enmfqReWdkqziUK1ExEmy-j5AVCNFNO6ZEMGvgOyVJtAQOkdvi5ey9FpvY2ZyUo1uKlVeQavNu6rL5YfwvMPR4isfTmgeQyj87hbvHf2gT5yaZGBO2JtvedOcOsu_S9N10dh2KyZW0lseHVfF4HANUU4jog3r8QcgkUCT29BkecYMLa7gpb3MissZFWOZnHoiS38pNScfV2fnVbqCzMMeKl3YdSrIB6pgW58dKEh_pFzJWBMsGr4WeCv3UslOXnR8gsOibscdRXjJWl74-etNUL6S0_8MjIqntYOFwg"
 
 # Auth Header
 
@@ -59,6 +59,7 @@ def verify_decode_jwt(token):
         issuer='https://' + AUTH0_DOMAIN + '/'
       )
       print('Verified')
+  
       return payload
 
     except jwt.ExpiredSignatureError:
@@ -85,5 +86,3 @@ def verify_decode_jwt(token):
   },400)
 
 
-# To test
-verify_decode_jwt(token)

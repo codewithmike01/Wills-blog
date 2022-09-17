@@ -4,10 +4,11 @@ from random import random
 from unicodedata import category
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
-
+import json
 from flask_cors import CORS
 import random
 from models import setup_db, User, Category, Post
+from jwt_code import verify_decode_jwt, AuthError
 
 
 # Pagination
@@ -219,7 +220,14 @@ def create_app(test_config=None):
         @wraps(f)
         def wrapper(*args, **kwargs):
             jwt = get_jwt(request)
-            return f(jwt,*args, **kwargs)
+            print(jwt)
+            try:
+                payload = verify_decode_jwt(jwt)
+                payload = json.dumps(payload)
+                
+            except:
+                abort(401)
+            return f(payload,*args, **kwargs)
         return wrapper
         
 # Header JWT Check
