@@ -1,12 +1,14 @@
+from functools import wraps
 import os
 from random import random
 from unicodedata import category
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
-
+import json
 from flask_cors import CORS
 import random
 from models import setup_db, User, Category, Post
+from jwt_code import verify_decode_jwt, AuthError
 
 
 # Pagination
@@ -21,6 +23,22 @@ def pagination_posts(request, selection):
 
     return current_posts
 
+# Auth Get JWT
+def get_jwt(request):
+    if 'Authorization' not in request.headers:
+            abort(401)
+
+    auth_header = request.headers['Authorization']
+    auth_path = auth_header.split(' ')
+   
+
+    if len(auth_path) != 2:
+        abort(401)
+
+    if auth_path[0].lower() != 'bearer':
+        abort(404)
+    
+    return(auth_path[1])
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -196,23 +214,50 @@ def create_app(test_config=None):
             "success":True,
             "post_id": post_id
         })
-        
 
-            
+    # Decorator creation
+    def requires_auth(f):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            jwt = get_jwt(request)
+            print(jwt)
+            try:
+                payload = verify_decode_jwt(jwt)
+                payload = json.dumps(payload)
+                
+            except:
+                abort(401)
+            return f(payload,*args, **kwargs)
+        return wrapper
+        
+# Header JWT Check
+    @app.route('/headers', methods=['GET'])
+    @requires_auth
+    def headers(jwt):
+        
+        return (jwt)              
 
 
     # Error Handlers
 
     @app.errorhandler(404)
-    def not_found():
+    def not_found(error):
         return jsonify({
             'success': False,
             'error': 404,
             'message': 'Not Found'
         }),404
 
+    @app.errorhandler(401)
+    def unauthorized(error):
+        return jsonify({
+            'success': False,
+            'error': 401,
+            'message': 'Unauthorized'
+        }),401
+
     @app.errorhandler(422)
-    def unprocessable():
+    def unprocessable(error):
         return jsonify({
             'success': False,
             'error': 422,
@@ -220,7 +265,7 @@ def create_app(test_config=None):
         }),422
 
     @app.errorhandler(500)
-    def unprocessable():
+    def unprocessable(error):
         return jsonify({
             'success': False,
             'error': 500,
@@ -229,6 +274,7 @@ def create_app(test_config=None):
 
 
 
+    
 
 
     return app

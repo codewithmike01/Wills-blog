@@ -13,7 +13,7 @@ function Navbar({ menuState, handleMenu }) {
 
   return (
     <>
-      <Container menuState={menuState}>
+      <Container menuState={menuState} className={menuState ? 'slidein' : ''}>
         <nav className="flex">
           <button type="button" className="cancel" onClick={() => handleMenu()}>
             {' '}
@@ -71,6 +71,16 @@ const Container = styled.div`
     background-color: gray;
     padding: 75px 25px;
     transition: all 0.5s ease-in-out;
+    animation: Slideout 0.5s ease-in-out;
+
+    @keyframes Slideout {
+      from {
+        left: -1000px;
+      }
+      to {
+        left: 0;
+      }
+    }
 
     nav {
       flex-direction: column;

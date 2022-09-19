@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { MdMenuBook } from 'react-icons/md';
 import { FaRegPlayCircle, FaMouse, FaMusic } from 'react-icons/fa';
 import { IoWallet } from 'react-icons/io5';
@@ -19,12 +18,13 @@ import Archieve from './UtilsComponents/Archieve';
 import LatestArticles from './LatestArticles';
 import LatestPostSide from '../SideBars/LatestPostSide';
 import Header from '../Header';
+import HomeContainer from './home.styles';
 
 function Home() {
   return (
     <>
       <Header />
-      <Container className="flex column">
+      <HomeContainer className="flex column">
         <div className="trend-finance">
           <Trend trend={trendPost} showGenre />
           <NoticePots />
@@ -67,43 +67,9 @@ function Home() {
           <LatestArticles latestTrend={latestPosts} />
           <LatestPostSide />
         </div>
-      </Container>
+      </HomeContainer>
     </>
   );
 }
 
 export default Home;
-
-const Container = styled.div`
-  padding-top: 4rem;
-  width: 95%;
-  margin: 0 auto;
-  gap: 6.5rem;
-
-  .trend-finance,
-  .life-post-genre,
-  .tech-post-genre,
-  .latest-aticles {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-  }
-
-  .music-side-post {
-    gap: 3rem;
-  }
-
-  @media screen and (max-width: 994px) {
-    width: 90%;
-    margin: 0 auto;
-    .trend-finance,
-    .life-post-genre,
-    .tech-post-genre,
-    .latest-aticles {
-      grid-template-columns: 1fr;
-      gap: 4rem;
-    }
-  }
-`;
