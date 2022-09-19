@@ -5,6 +5,7 @@ from sqlalchemy import Column, String, Integer,Boolean, ForeignKey, create_engin
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import json
+from datetime import datetime
 
 
 database_name = 'wills_blog'
@@ -159,6 +160,7 @@ class Post(db.Model):
   content = Column(String)
   category_id = Column(Integer, ForeignKey('categories.id'))
   like_count = Column(Integer)
+  created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
 
   def  __init__(self, title, content, category_id, like_count):
