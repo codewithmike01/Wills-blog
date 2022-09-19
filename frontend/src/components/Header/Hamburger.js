@@ -7,7 +7,7 @@ import HamBurgerContainer from './header.styles';
 function Hamburger({ menuState, handleMenu }) {
   return (
     <>
-      <HamBurgerContainer onClick={() => handleMenu()}>
+      <HamBurgerContainer onClick={() => handleMenu()} menuState={menuState}>
         <span className="ham-line"></span>
         <span className="ham-line"></span>
         <span className="ham-line"></span>
