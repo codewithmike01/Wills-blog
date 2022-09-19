@@ -1,8 +1,9 @@
 import React from 'react';
+import NewsLetterContainer from './newsletter.style';
 
 function NewLetter() {
   return (
-    <Container>
+    <NewsLetterContainer>
       <h2 className="opacity">Newsletter</h2>
 
       <div className="sub-container flex column">
@@ -20,7 +21,7 @@ function NewLetter() {
           </p>
         </div>
       </div>
-    </Container>
+    </NewsLetterContainer>
   );
 }
 
