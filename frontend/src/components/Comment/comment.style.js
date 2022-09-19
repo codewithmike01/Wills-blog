@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BannerContainer = styled.div`
+const CommentContainer = styled.div`
   gap: 2rem;
 
   .comment-count {
@@ -78,4 +78,4 @@ const BannerContainer = styled.div`
   }
 `;
 
-export default BannerContainer;
+export default CommentContainer;

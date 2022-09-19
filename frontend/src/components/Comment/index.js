@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import BannerContainer from '../Banner.js/banner.style';
+import CommentContainer from './comment.style';
 import BlogImage from '../../assets/blogImg.jpg';
 
 function index() {
   const [cookie] = useCookies(['user']);
   const navigate = useNavigate();
   return (
-    <BannerContainer className="flex column">
+    <CommentContainer className="flex column">
       <div className="comment-count opacity"> 1 Comment </div>
       <div className="comments">
         <div className="comment flex">
@@ -44,7 +44,7 @@ function index() {
           </button>
         </div>
       )}
-    </BannerContainer>
+    </CommentContainer>
   );
 }
 
