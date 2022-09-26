@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { MdMenuBook } from 'react-icons/md';
 import HeaderNav from '../Header/HeaderNav';

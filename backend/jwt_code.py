@@ -4,7 +4,7 @@ from jose import jwt
 from urllib.request import urlopen 
 
 # Configuration of AUTH0 ACCOUNT
-AUTH0_DOMAIN = 'dev-5plhe-yu.us.auth0.com'
+AUTH0_DOMAIN = 'dev-efynh0m7.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'wills-blog'
 

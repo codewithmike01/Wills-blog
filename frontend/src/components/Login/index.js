@@ -1,17 +1,24 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useCookies } from 'react-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { loginWithRedirect } = useAuth0();
+  const { logout } = useAuth0();
   const [cookies, setCookie] = useCookies(['user']);
 
+  console.log('Location path', location.pathname);
   useEffect(() => {
     if (cookies.user) {
       navigate('/');
     }
   }, []);
+
+  console.log('Previous nav', navigate(-1));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +41,30 @@ function Login() {
           </form>
         </div>
       )}
+
+      <button
+        type="button"
+        className="btn btn-primary btn-block"
+        onClick={() => loginWithRedirect({ appState: { target: '/Life/1' } })}
+      >
+        Log In
+      </button>
+
+      <button
+        type="button"
+        className="btn btn-primary btn-block"
+        onClick={() => loginWithRedirect({ screen_hint: 'signup' })}
+      >
+        Sign up
+      </button>
+
+      <button
+        type="button"
+        className="btn btn-danger btn-block"
+        onClick={() => logout({ returnTo: window.location.origin })}
+      >
+        Log Out
+      </button>
     </Container>
   );
 }

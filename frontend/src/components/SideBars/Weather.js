@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-import React from 'react';
+
 import styled from 'styled-components';
 import { AiOutlineCloud } from 'react-icons/ai';
 import {

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable object-curly-newline */
-import React from 'react';
+
 import { SidePostContainer } from './utils.styles';
 
 // import blogImage from '../../../assets/blogImg.jpg';

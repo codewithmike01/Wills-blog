@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable comma-dangle */
 /* eslint-disable object-curly-newline */
-import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import TrendContainer from './utils.styles';
 

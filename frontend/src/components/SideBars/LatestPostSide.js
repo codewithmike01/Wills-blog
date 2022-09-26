@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import BlogImage from '../../assets/blogImg.jpg';
 import ImageGrid from './Components/ImageGrid';

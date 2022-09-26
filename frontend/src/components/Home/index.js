@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdMenuBook } from 'react-icons/md';
 import { FaRegPlayCircle, FaMouse, FaMusic } from 'react-icons/fa';
 import { IoWallet } from 'react-icons/io5';
