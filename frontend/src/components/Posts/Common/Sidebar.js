@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { FaBookReader } from 'react-icons/fa';
 import { musicSide } from '../../Home/UtilsComponents/CommonTrend';

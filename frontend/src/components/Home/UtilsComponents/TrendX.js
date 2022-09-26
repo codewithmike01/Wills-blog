@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable comma-dangle */
 /* eslint-disable object-curly-newline */
-import React from 'react';
+
 import { TrendXContainer } from './utils.styles';
 
 function TrendX({ trend, icon, genre }) {

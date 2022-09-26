@@ -1,4 +1,3 @@
-import React from 'react';
 import NewsLetterContainer from './newsletter.style';
 
 function NewLetter() {

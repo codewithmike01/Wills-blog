@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { ImShare2 } from 'react-icons/im';
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';

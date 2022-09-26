@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable no-confusing-arrow */
 /* eslint-disable implicit-arrow-linebreak */
-import React from 'react';
+
 import styled from 'styled-components';
 import HeaderNav from './HeaderNav';
 

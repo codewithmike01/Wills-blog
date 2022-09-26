@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/prop-types */
-import React from 'react';
+
 import { FaBookReader, FaChevronDown } from 'react-icons/fa';
 import { LastestArticleContainer } from './home.styles';
 

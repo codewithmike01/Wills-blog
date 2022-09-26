@@ -1,5 +1,5 @@
 /* eslint-disable react/self-closing-comp */
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import Navbar from '../Navbar/Navbar';
 import HamBurgerContainer from './header.styles';
